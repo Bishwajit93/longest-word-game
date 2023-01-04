@@ -1,9 +1,27 @@
-<div class="container">
-  <h1>Hello from stupid word game</h1>
-  <ul class = "letters container box">
-    <% @letters.each do |letter| %>
-      <%= letter %>
-    <% end %>
-  </ul>
-
+<div class="container border border-2 rounded border-dark box">
+  <div>
+    <h1> Stupid Word Game </h1>
+  </div>
+  <div>
+    <ul class = "letters">
+      <% @letters.each do |letter| %>
+        <%= letter %>
+      <% end %>
+    </ul>
+  </div>
+  <div>
+    <p> Which longest word comes iny our mind? </p>
+  </div>
+  <form action="/score" method="post" data-turbo="false">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :letters, @letters %>
+    <div>
+      <div>
+        <input type="text" name="word" class="form-control">
+      </div>
+      <div>
+        <input type="submit" value="Game on!!!!" class="btn btn-primary">
+      </div>
+    </div>
+  </form>
 </div>

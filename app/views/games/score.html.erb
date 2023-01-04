@@ -1,1 +1,27 @@
-<p>hello from stupid word game</p>
+<div class="container border border-2 rounded border-dark box"">
+  <% count=0 %>
+  <h1> Stupid Word Game </h1>
+  <% if @included %>
+    <% if @english_word %>
+      <% count=1 %>
+      <p><strong>Great!!! </strong> </p>
+      <p>Your given <strong><%= @word %></strong> is a correct word!!! </p>
+      <p><strong>Ewwwhuuuuu!</strong></p>
+    <% else %>
+      <p><strong>Sorry!!!</strong> </p>
+      <p>Given <%= @word %> is not a valid english word.</p>
+    <% end %>
+  <% else %>
+    <p><strong>Sorry!!!</strong> </p>
+    <p> Given <%= @word %> could not be built with the given <%= @letters.join(", ") %></p>
+  <% end %>
+  <% if count==1 %>
+      <div >
+        <%= link_to "Play again!", new_path, class:"btn btn-success" %>
+      </div>
+  <% else %>
+    <div>
+      <%= link_to "Try again!", new_path, class:"btn btn-dark" %>
+    </div>
+  <% end %>
+</div>
